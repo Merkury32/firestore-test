@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import * as firebase from 'firebase/app';
 import 'firebase/database';
 import { DataService } from './data-service/data.service';
@@ -11,13 +11,22 @@ import { DataService } from './data-service/data.service';
 export class AppComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
+  value;
+
+  @ViewChild('entryForm') entryForm: AppComponent;
+
   ngOnInit() {
     this.addData();
     this.fetchData();
   }
 
   fetchData() {
-    this.dataService.fetchData().subscribe(data => {
+      let x = this.entryForm.value.X;
+      let y = this.entryForm.value.Y;
+      let z = this.entryForm.value.Z;
+      let w = this.entryForm.value.W;
+
+    this.dataService.fetchData(x, y, z, w).subscribe(data => {
       console.log(data);
     })
   }

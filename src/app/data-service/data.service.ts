@@ -8,23 +8,25 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class DataService {
   constructor(private db: AngularFirestore) { }
 
+  width = 0;
+  height = 0;
+
   addData() {
-
-
-      // I: {name: 'Piotr', width: 20, height: 30}
-      // II: {name: 'Maciej', width: 30, height: 30}
-      // III: {name: 'Mikołaj', width: 20, height: 30}
-      // IV: {name: 'Kacper', width: 40, height: 40}
-      // V: {name: 'Jan', width: 50, height: 20}
-
-      this.db.collection("data").doc('1').set({name: 'Piotr', width: 20, height: 30})
+    // let k = 0;
+    // for (let i = 1; i <= 100; i++) {
+    //   this.width = i;
+    //   for (let j = 1; j <= 100; j++) {
+    //     this.height = j;
+    //     k++;
+    //     this.db.collection("data").doc(k.toString()).set({name: 'Test', width: this.width, height: this.height})
+    //   }
+    // }
   }
 
-  fetchData() {
-    let dataRef = this.db.collection("data", ref => ref.where('width', '==', 20).where('height', '==', 30));
+  fetchData(x, y, z, w) {
+    let dataRef = this.db.collection("data", ref => ref.where('width', '<', x).where('width', '>', y).where('height', '<', w).where('height', '>', z));
 
     return dataRef.valueChanges();
-
   }
 
 

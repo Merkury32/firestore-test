@@ -1,1 +1,15 @@
-<h1>Test</h1>
+<form #entryForm="ngForm">
+  <label for="X">X:</label>
+  <input ngModel type="number" name="X" id="X">
+
+  <label for="Y">Y:</label>
+  <input ngModel type="number" name="Y" id="Y">
+
+  <label for="Z">Z:</label>
+  <input ngModel type="number" name="Z" id="Z">
+
+  <label for="W">W:</label>
+  <input ngModel type="number" name="W" id="W">
+
+  <button type="button" (click)="fetchData()">Wyświetl</button>
+</form>
