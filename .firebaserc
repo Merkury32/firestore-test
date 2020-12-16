@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fir-localisation-test": {
+      "hosting": {
+        "firebase-localisation-test": [
+          "fir-localisation-test"
+        ]
+      }
+    }
+  }
+}
